@@ -33,7 +33,7 @@ namespace SpecFlowSelenium.StepDefinitions
             Assert.IsTrue(string.IsNullOrEmpty(loginPage.PasswordField.GetAttribute("value")));
         }
 
-        [Then(@"Log in button should be (\w+)")]
+        [Then(@"Log in button should be in (\w+) state")]
         public void ThenLogInButtonShouldBeUnactivve(string buttonState)
         {
             Assert.IsTrue(loginPage.LoginButton.GetAttribute("class").Contains($"button {buttonState}"));
