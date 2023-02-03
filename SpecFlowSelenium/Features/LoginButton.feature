@@ -17,6 +17,6 @@ Login button should be inactive, when fields are not filled or filled unproperly
 
     Examples: 
     | email              | password    | state    |
-    | IncorrectEmail     | AnyPassword | disabled |
-    | GoodEmail@test.com | AnyPassword | active   |
+    | IncorrectEmail     | WrongPassword | disabled |
+    | GoodEmail@test.com | WrongPassword | active   |
 
