@@ -4,3 +4,5 @@
 /.vs/SpecFlowSelenium/DesignTimeBuild/
 /.vs/SpecFlowSelenium/v17/
 /SpecFlowSelenium/obj/Debug/
+/SpecFlowSelenium/bin/Release/
+/SpecFlowSelenium/obj/Release/

@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using SpecFlowSelenium.Pages;
+﻿using SpecFlowSelenium.Pages;
 
 namespace SpecFlowSelenium.StepDefinitions
 {

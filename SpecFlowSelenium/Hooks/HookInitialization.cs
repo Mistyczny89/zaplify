@@ -1,5 +1,4 @@
-﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+﻿using OpenQA.Selenium.Chrome;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
@@ -8,7 +7,7 @@ namespace SpecFlowSelenium.Hooks
     [Binding]
     public class HookInitialization
     {
-        private DriverHelper _driverHelper;
+        private readonly DriverHelper _driverHelper;
         public HookInitialization(DriverHelper driverHelper) => _driverHelper = driverHelper;
 
         [BeforeScenario]

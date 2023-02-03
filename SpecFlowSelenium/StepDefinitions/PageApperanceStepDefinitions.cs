@@ -9,8 +9,8 @@ namespace SpecFlowSelenium.StepDefinitions
     {
         #region Fields and Constants
 
-        private DriverHelper _driverHelper;
-        LoginPage loginPage;
+        private readonly DriverHelper _driverHelper;
+        readonly LoginPage loginPage;
 
         public PageApperanceStepDefinitions(DriverHelper driverHelper)
         {

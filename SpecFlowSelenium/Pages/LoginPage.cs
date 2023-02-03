@@ -17,7 +17,6 @@ namespace SpecFlowSelenium.Pages
         #region UI elements
         public IWebElement EmailField => Driver.FindElement(By.CssSelector("input[name='email']"));
         public IWebElement PasswordField => Driver.FindElement(By.CssSelector("input[name='password']"));
-        public IWebElement MainPageLogo => Driver.FindElement(By.CssSelector("img[alt='Logo']"));
         public IWebElement LoginButton => Driver.FindElement(By.CssSelector("button[type='submit']"));
         public IWebElement Logo => Driver.FindElement(By.CssSelector("img[alt = 'Logo']"));
 
