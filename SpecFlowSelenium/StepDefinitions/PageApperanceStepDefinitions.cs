@@ -25,12 +25,6 @@ namespace SpecFlowSelenium.StepDefinitions
 
         #region Test Steps
 
-        [Given(@"I am on the login page")]
-        public void GivenIAmOnTheLoginPage()
-        {
-            loginPage.GoToPage();
-        }
-
         [Then(@"zaplify logo shoud be visible")]
         public void ThenZaplifyLogoShoudBeVisible()
         {

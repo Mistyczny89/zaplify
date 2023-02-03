@@ -20,11 +20,6 @@ namespace SpecFlowSelenium.StepDefinitions
         #endregion
 
         #region Test Setps
-        [Given(@"I am on login page")]
-        public void GivenIGoToHttpsStaging_App_Zaplify_ComLogin()
-        {
-            loginPage.GoToPage();
-        }
 
         [When(@"the field email is empty")]
         public void WhenTheFieldEmailIsEmpty()
@@ -38,16 +33,10 @@ namespace SpecFlowSelenium.StepDefinitions
             Assert.IsTrue(string.IsNullOrEmpty(loginPage.PasswordField.GetAttribute("value")));
         }
 
-        [Then(@"Log in button should be unactivve")]
-        public void ThenLogInButtonShouldBeUnactivve()
+        [Then(@"Log in button should be (\w+)")]
+        public void ThenLogInButtonShouldBeUnactivve(string buttonState)
         {
-            Assert.IsTrue(loginPage.LoginButton.GetAttribute("class").Contains("button disabled"));
-        }
-
-        [When(@"I type '([^']*)' in Email Field")]
-        public void WhenITypeInEmailField(string testEmail)
-        {
-            throw new PendingStepException();
+            Assert.IsTrue(loginPage.LoginButton.GetAttribute("class").Contains($"button {buttonState}"));
         }
 
         #endregion

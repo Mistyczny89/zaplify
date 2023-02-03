@@ -102,7 +102,7 @@ namespace SpecFlowSelenium.Features
             {
                 this.ScenarioStart();
 #line 6
-    testRunner.Given("I am on login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("I am on the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
     testRunner.When("the field email is empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
@@ -118,12 +118,12 @@ namespace SpecFlowSelenium.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Unactive Log in button when unproperly filled fields")]
-        public virtual void UnactiveLogInButtonWhenUnproperlyFilledFields()
+        [NUnit.Framework.DescriptionAttribute("Unactive Log in button when Email field filled with incorrect syntax")]
+        public virtual void UnactiveLogInButtonWhenEmailFieldFilledWithIncorrectSyntax()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Unactive Log in button when unproperly filled fields", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Unactive Log in button when Email field filled with incorrect syntax", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 11
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -145,16 +145,59 @@ namespace SpecFlowSelenium.Features
             {
                 this.ScenarioStart();
 #line 12
-    testRunner.Given("I am on login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("I am on the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 13
     testRunner.When("I type \'TestEmail\' in Email Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 14
-    testRunner.And("the field password is empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("I type \'TestPassword\' in Passowrd Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 15
-    testRunner.Then("Log in button should be unactivve", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("Log in button should be disabled", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Active Log in button when Email field filled with correct syntax")]
+        public virtual void ActiveLogInButtonWhenEmailFieldFilledWithCorrectSyntax()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Active Log in button when Email field filled with correct syntax", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 17
+ this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 18
+    testRunner.Given("I am on the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 19
+    testRunner.When("I type \'TestEmail@test.com\' in Email Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 20
+    testRunner.And("I type \'TestPassword\' in Passowrd Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 21
+    testRunner.Then("Log in button should be active", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
