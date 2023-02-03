@@ -4,14 +4,14 @@ using SpecFlowSelenium.Pages;
 namespace SpecFlowSelenium.StepDefinitions
 {
     [Binding]
-    public class LoginButton
+    public class LoginButtonTestSteps
     {
         #region Fields and Constants
                 
         private DriverHelper _driverHelper; 
         LoginPage loginPage;
 
-        public LoginButton(DriverHelper driverHelper) 
+        public LoginButtonTestSteps(DriverHelper driverHelper) 
         {
             _driverHelper = driverHelper;
             loginPage = new(_driverHelper.Driver);

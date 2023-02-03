@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using System.Security.Cryptography.X509Certificates;
 
 namespace SpecFlowSelenium.Pages
 {
@@ -19,6 +20,8 @@ namespace SpecFlowSelenium.Pages
         public IWebElement PasswordField => Driver.FindElement(By.CssSelector("input[name='password']"));
         public IWebElement LoginButton => Driver.FindElement(By.CssSelector("button[type='submit']"));
         public IWebElement Logo => Driver.FindElement(By.CssSelector("img[alt = 'Logo']"));
+        public IWebElement RequiredEmailInfo => Driver.FindElement(By.CssSelector(@"div[class*=jss14] > p[class*='MuiFormHelperText-contained']"));
+        public IWebElement RequiredPasswordlInfo => Driver.FindElement(By.CssSelector(@"div[class*=jss15] > p[class*='MuiFormHelperText-contained']"));
 
         #endregion
 
