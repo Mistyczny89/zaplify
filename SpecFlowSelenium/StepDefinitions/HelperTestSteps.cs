@@ -5,14 +5,14 @@ using SpecFlowSelenium.Pages;
 namespace SpecFlowSelenium.StepDefinitions
 {
     [Binding]
-    public class HelperTexts
+    public class HelperTestSteps
     {
         #region Fields and Constants
 
         private DriverHelper _driverHelper;
         LoginPage loginPage;
 
-        public HelperTexts(DriverHelper driverHelper)
+        public HelperTestSteps(DriverHelper driverHelper)
         {
             _driverHelper = driverHelper;
             loginPage = new(_driverHelper.Driver);

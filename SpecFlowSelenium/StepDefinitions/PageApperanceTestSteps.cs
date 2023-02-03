@@ -5,14 +5,14 @@ using SpecFlowSelenium.Pages;
 namespace SpecFlowSelenium.StepDefinitions
 {
     [Binding]
-    public class PageApperanceStepDefinitions
+    public class PageApperanceTestSteps
     {
         #region Fields and Constants
 
         private readonly DriverHelper _driverHelper;
         readonly LoginPage loginPage;
 
-        public PageApperanceStepDefinitions(DriverHelper driverHelper)
+        public PageApperanceTestSteps(DriverHelper driverHelper)
         {
             _driverHelper = driverHelper;
             loginPage = new(_driverHelper.Driver);
@@ -57,6 +57,13 @@ namespace SpecFlowSelenium.StepDefinitions
         {
             Assert.IsTrue(loginPage.PasswordField.Displayed, "Password field is not visible.");
         }
+
+        [Then(@"Password toggle button should be visible")]
+        public void ThenPasswordToggleButtonShouldBeVisible()
+        {
+            Assert.IsTrue(loginPage.TogglePsswrdBtn.Displayed, "Password toggle button is not visible.");
+        }
+
 
         [Then(@"LogIn filed should be visible")]
         public void ThenLogInFiledShouldBeVisible()

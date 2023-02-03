@@ -10,6 +10,7 @@ I want to see properly login page on Zaplify
 	 And Email field should be visible
 	 And Password field should be visible
 	 And LogIn filed should be visible
+	 And Password toggle button should be visible
 
   Scenario: Placeholders in login fields 
 	Given I am on the login page
