@@ -22,7 +22,8 @@ namespace SpecFlowSelenium.Pages
         public IWebElement Logo => Driver.FindElement(By.CssSelector("img[alt = 'Logo']"));
         public IWebElement RequiredEmailInfo => Driver.FindElement(By.CssSelector(@"div[class*=jss14] > p[class*='MuiFormHelperText-contained']"));
         public IWebElement RequiredPasswordlInfo => Driver.FindElement(By.CssSelector(@"div[class*=jss15] > p[class*='MuiFormHelperText-contained']"));
-
+        public System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> RequiredEmailInfoList => Driver.FindElements(By.CssSelector(@"div[class*=jss14] > p[class*='MuiFormHelperText-contained']"));
+        public System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> RequiredPasswordlInfoList => Driver.FindElements(By.CssSelector(@"div[class*=jss15] > p[class*='MuiFormHelperText-contained']"));
         #endregion
 
         #region Clicks
