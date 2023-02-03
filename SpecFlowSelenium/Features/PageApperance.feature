@@ -15,3 +15,8 @@ I want to see properly login page on Zaplify
 	Given I am on the login page
 	Then Email placeholder should be visible
 	And Password placeholder should be visible
+
+  Scenario: Click of zaplify logo
+    Given I am on the login page
+	When I click on zaplify logo
+	Then I should be on page https://zaplify.com/

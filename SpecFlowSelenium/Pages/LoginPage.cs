@@ -4,16 +4,8 @@ namespace SpecFlowSelenium.Pages
 {
     public class LoginPage
     {
-        #region Properties and idexers
-
-        /// <summary>
-        /// Gets the Web Driver
-        /// </summary>
-        public IWebDriver WebDriver { get; }
-
-        public LoginPage(IWebDriver webDriver) => WebDriver = webDriver;
-
-        #endregion
+        private readonly IWebDriver Driver;
+        public LoginPage(IWebDriver driver) => Driver = driver;
 
         #region Fields and Constants
 
@@ -23,11 +15,11 @@ namespace SpecFlowSelenium.Pages
         #endregion
 
         #region UI elements
-        public IWebElement EmailField => WebDriver.FindElement(By.CssSelector("input[name='email']"));
-        public IWebElement PasswordField => WebDriver.FindElement(By.CssSelector("input[name='password']"));
-        public IWebElement MainPageLogo => WebDriver.FindElement(By.CssSelector("img[alt='Logo']"));
-        public IWebElement LoginButton => WebDriver.FindElement(By.CssSelector("button[type='submit']"));
-        public IWebElement Logo => WebDriver.FindElement(By.CssSelector("img[alt = 'Logo']"));
+        public IWebElement EmailField => Driver.FindElement(By.CssSelector("input[name='email']"));
+        public IWebElement PasswordField => Driver.FindElement(By.CssSelector("input[name='password']"));
+        public IWebElement MainPageLogo => Driver.FindElement(By.CssSelector("img[alt='Logo']"));
+        public IWebElement LoginButton => Driver.FindElement(By.CssSelector("button[type='submit']"));
+        public IWebElement Logo => Driver.FindElement(By.CssSelector("img[alt = 'Logo']"));
 
         #endregion
 
@@ -47,7 +39,7 @@ namespace SpecFlowSelenium.Pages
 
         public void GoToPage()
         {
-            WebDriver.Navigate().GoToUrl(logPage);
+            Driver.Navigate().GoToUrl(logPage);
         }
         #endregion
 

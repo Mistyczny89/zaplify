@@ -5,24 +5,29 @@ using WebDriverManager.DriverConfigs.Impl;
 
 namespace SpecFlowSelenium.Hooks
 {
+    [Binding]
     public class HookInitialization
     {
-        public IWebDriver webDriver;
-  
+        private DriverHelper _driverHelper;
+        public HookInitialization(DriverHelper driverHelper) => _driverHelper = driverHelper;
+
         [BeforeScenario]
         public void BeforeScenario()
         {
-            new DriverManager().SetUpDriver(new ChromeConfig());
-            webDriver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.AddArguments("start-maximized");
 
-            webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            webDriver.Manage().Window.Maximize();
+            new DriverManager().SetUpDriver(new ChromeConfig());
+            _driverHelper.Driver = new ChromeDriver(options);
+
+            _driverHelper.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+  
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            webDriver.Close();
+            _driverHelper.Driver.Close();
         }
     }
 }
