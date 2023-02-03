@@ -76,12 +76,26 @@ namespace SpecFlowSelenium.StepDefinitions
         {
 
             string placeholderVal = placeholder switch
-            { 
+            {
                 "Email" => loginPage.EmailField.GetAttribute("placeholder"),
                 "Password" => loginPage.PasswordField.GetAttribute("placeholder"),
+                _ => throw new NotImplementedException(),
             };
                
             Assert.AreEqual(placeholderVal, placeholder, $"{placeholder} placeholder is not visible");
         }
+
+        [When(@"I click on zaplify logo")]
+        public void WhenIClickOnZaplifyLogo()
+        {
+            loginPage.Logo.Click();
+        }
+
+        [Then(@"I should be on page (https:\/\/.+\..{2,3}\/)")]
+        public void ThenIShouldBeOnMainPageHttpsZaplify_Com(string page)
+        {
+            Assert.That(webDriver.Url, Is.EqualTo(page), "URL is not correct");
+        }
+
     }
 }
