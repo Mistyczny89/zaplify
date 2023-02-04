@@ -117,7 +117,7 @@ namespace SpecFlowSelenium.Features
  testRunner.Then("I should see \'Required\' information under Email field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 12
- testRunner.And("I should see \'You must type in a password\' information under Password field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I should see \'No password info\' information under Password field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -154,7 +154,7 @@ namespace SpecFlowSelenium.Features
     testRunner.Given("I am on the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 16
-    testRunner.When("I type \'GoodEmail@test.com\' in Email Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I type \'Good Syntax Email\' in Email Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 17
  testRunner.And("I click of Password field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -163,11 +163,10 @@ namespace SpecFlowSelenium.Features
  testRunner.And("I click of Email field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 19
- testRunner.And("I type \'12345\' in Passowrd Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I type \'5 digit password\' in Passowrd Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 20
- testRunner.Then("I should see \'Your password must contain at least 6 characters\' information under" +
-                        " Password field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should see \'Short password info\' information under Password field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -204,13 +203,13 @@ namespace SpecFlowSelenium.Features
     testRunner.Given("I am on the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 24
-    testRunner.When("I type \'IncorrectEmail\' in Email Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I type \'Bad Syntax Email\' in Email Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 25
  testRunner.And("I click of Password field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 26
- testRunner.Then("I should see \'Invalid email address\' information under Email field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should see \'Invalid email\' information under Email field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -247,7 +246,7 @@ namespace SpecFlowSelenium.Features
     testRunner.Given("I am on the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 30
-    testRunner.When("I type \'GoodEmail@test.com\' in Email Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I type \'Good Syntax Email\' in Email Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 31
  testRunner.And("I click of Password field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -290,7 +289,7 @@ namespace SpecFlowSelenium.Features
     testRunner.Given("I am on the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 36
-    testRunner.When("I type \'GoodEmail@test.com\' in Email Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I type \'Good Syntax Email\' in Email Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 37
  testRunner.And("I send backspace in Email field 2 time(s)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -299,7 +298,7 @@ namespace SpecFlowSelenium.Features
  testRunner.And("I click of Password field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 39
- testRunner.Then("I should see \'Invalid email address\' information under Email field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should see \'Invalid email\' information under Email field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -336,7 +335,7 @@ namespace SpecFlowSelenium.Features
     testRunner.Given("I am on the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 43
-    testRunner.When("I type \'GoodEmail@test.com\' in Email Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("I type \'Good Syntax Email\' in Email Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 44
  testRunner.And("I click of Password field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -345,14 +344,13 @@ namespace SpecFlowSelenium.Features
  testRunner.And("I click of Email field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 46
- testRunner.And("I type \'123456\' in Passowrd Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I type \'6 digit password\' in Passowrd Field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 47
  testRunner.And("I send backspace in Password field 1 time(s)", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 48
- testRunner.Then("I should see \'Your password must contain at least 6 characters\' information under" +
-                        " Password field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should see \'Short password info\' information under Password field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

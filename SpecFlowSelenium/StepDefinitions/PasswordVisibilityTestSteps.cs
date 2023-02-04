@@ -25,14 +25,15 @@ namespace SpecFlowSelenium.StepDefinitions
         [Then(@"I should see dots as my Password")]
         public void ThenIShouldSeeDotsAsMyPassowd()
         {
-            Assert.AreEqual(loginPage.PasswordField.GetAttribute("Type"), "password");
+            Assert.AreEqual(loginPage.PasswordField.GetAttribute("Type"), "password", "Password field Type should be \"Passowrd\", but isn't.");
         }
 
 
         [Then(@"number of dots shoud be equal to number of characters in Password '(.*)'")]
         public void ThenNumberOfDotsShoudBeEqualToNumberOfCharactersInPassword(string password)
         {
-            Assert.AreEqual(loginPage.PasswordField.GetAttribute("value").Count(), password.Length);
+            string pwd = GherkinFieldsHelper.GetGherkinObject(password);
+            Assert.AreEqual(loginPage.PasswordField.GetAttribute("value").Count(), pwd.Length, "Length of the hidden password is incorrect.");
         }
 
         [When(@"I click on toggle password visibility button")]
@@ -44,8 +45,9 @@ namespace SpecFlowSelenium.StepDefinitions
         [Then(@"I should see '(.*)' in Password field")]
         public void ThenIShouldSeeInPasswordField(string password)
         {
-            Assert.AreEqual(loginPage.PasswordField.GetAttribute("Type"), "text");
-            Assert.AreEqual(loginPage.PasswordField.GetAttribute("Value"), password);
+            string pwd = GherkinFieldsHelper.GetGherkinObject(password);
+            Assert.AreEqual(loginPage.PasswordField.GetAttribute("Type"), "text", "Password field Type should be \"text\", but isn't.");
+            Assert.AreEqual(loginPage.PasswordField.GetAttribute("Value"), pwd, "Password isn't visible.");
         }
 
 

@@ -8,15 +8,14 @@ Login button should be inactive, when fields are not filled or filled unproperly
     And the field password is empty
     Then Log in button should be in disabled state
 
-  Scenario Outline: Log in button state according to Email syntax
+  Scenario: Log in button state - bad Email syntax
     Given I am on the login page
-    When I type '<email>' in Email Field
-    And I type '<password>' in Passowrd Field
-    Then Log in button should be in <state> state
+    When I type 'Bad Syntax Email' in Email Field
+    And I type 'Registed User Pwd' in Passowrd Field
+    Then Log in button should be in disabled state
 
-
-    Examples: 
-    | email              | password    | state    |
-    | IncorrectEmail     | WrongPassword | disabled |
-    | GoodEmail@test.com | WrongPassword | active   |
-
+ Scenario: Log in button state - good Email syntax
+    Given I am on the login page
+    When I type 'Good Syntax Email' in Email Field
+    And I type 'Registed User Pwd' in Passowrd Field
+    Then Log in button should be in active state

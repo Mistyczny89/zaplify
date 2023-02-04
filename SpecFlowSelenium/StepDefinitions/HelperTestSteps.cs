@@ -37,8 +37,9 @@ namespace SpecFlowSelenium.StepDefinitions
         [Then(@"I should see '([^']*)' information under Email field")]
         public void ThenIShouldSeeInformationUnderEmailField(string requiredInfo)
         {
+            string reqInfo = GherkinFieldsHelper.GetGherkinObject(requiredInfo);
             if (loginPage.RequiredEmailInfoList.Count > 0)
-                Assert.AreEqual(requiredInfo, loginPage.RequiredEmailInfo.Text);
+                Assert.AreEqual(reqInfo, loginPage.RequiredEmailInfo.Text);
             else
                 Assert.IsNotEmpty(loginPage.RequiredEmailInfoList, "There is no information under Email Field");           
         }
@@ -46,8 +47,9 @@ namespace SpecFlowSelenium.StepDefinitions
         [Then(@"I should see '([^']*)' information under Password field")]
         public void ThenIShouldSeeUnderPasswordField(string requiredInfo)
         {
+            string reqInfo = GherkinFieldsHelper.GetGherkinObject(requiredInfo);
             if (loginPage.RequiredPasswordlInfoList.Count > 0)            
-                Assert.AreEqual(requiredInfo, loginPage.RequiredPasswordlInfo.Text);            
+                Assert.AreEqual(reqInfo, loginPage.RequiredPasswordlInfo.Text);            
             else            
                 Assert.IsNotEmpty(loginPage.RequiredPasswordlInfoList, "There is no information under Password Field");
                       

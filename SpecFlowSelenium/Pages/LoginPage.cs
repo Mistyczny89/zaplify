@@ -1,22 +1,13 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using System.Xml;
 
 namespace SpecFlowSelenium.Pages
 {
-    public class LoginPage
+    public class LoginPage : GherkinFieldsHelper
     {
+
         private readonly IWebDriver Driver;
         public LoginPage(IWebDriver driver) => Driver = driver;
-
-        #region Fields and Constants
-
-        public const string logPage = "https://staging.app.zaplify.com/login";
-        public const string zaplifyMainPage = "https://zaplify.com/";
-
-        const string XmlPath = @"C:\ZaplifyUserCredencials.xml";
-
-        #endregion
 
         #region UI elements
         public IWebElement EmailField => Driver.FindElement(By.CssSelector("input[name='email']"));
@@ -45,30 +36,22 @@ namespace SpecFlowSelenium.Pages
 
         public void GoToPage()
         {
-            Driver.Navigate().GoToUrl(logPage);
+            string url = GherkinFieldsHelper.GetGherkinObject("Login Page");
+            Driver.Navigate().GoToUrl(url);
         }
+
         #endregion
 
         #region Private ethods
 
         public void LogIntoPage()
         {
-            string username = GetNodeValue("Username");
-            string password = GetNodeValue("Password");
+            string username = GetGherkinObject("Registred User");
+            string password = GetGherkinObject("Registed User Pwd");
 
             EmailField.SendKeys(username);
             PasswordField.SendKeys(password);
             ClickLogin();
-        }
-
-        private string GetNodeValue(string nodeName)
-        {
-            XmlDocument xmlDoc = new();
-            xmlDoc.Load(XmlPath);
-            XmlNodeList? xnList = xmlDoc.SelectNodes($"root/UserCredencials/{nodeName}");
-
-            return xnList.OfType<XmlNode>()
-                         .First().InnerText;
         }
 
         #endregion

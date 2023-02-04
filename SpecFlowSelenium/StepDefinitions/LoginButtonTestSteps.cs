@@ -36,7 +36,7 @@ namespace SpecFlowSelenium.StepDefinitions
         [Then(@"Log in button should be in (\w+) state")]
         public void ThenLogInButtonShouldBeUnactivve(string buttonState)
         {
-            Assert.IsTrue(loginPage.LoginButton.GetAttribute("class").Contains($"button {buttonState}"));
+            Assert.IsTrue(loginPage.LoginButton.GetAttribute("class").Contains($"button {buttonState}"), "Log in Button should be active, but isn't");
         }
 
         #endregion

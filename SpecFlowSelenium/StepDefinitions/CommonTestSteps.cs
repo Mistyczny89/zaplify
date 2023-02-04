@@ -8,7 +8,7 @@ namespace SpecFlowSelenium.StepDefinitions
         #region Fields and Constants
 
         private DriverHelper _driverHelper;
-        LoginPage loginPage;
+        private readonly LoginPage loginPage;
 
         public CommonSteps(DriverHelper driverHelper)
         {
@@ -29,13 +29,15 @@ namespace SpecFlowSelenium.StepDefinitions
         [When(@"I type '(.*)' in Email Field")]
         public void WhenITypeInEmailField(string testEmail)
         {
-            loginPage.EmailField.SendKeys(testEmail);
+            string email = GherkinFieldsHelper.GetGherkinObject(testEmail);
+            loginPage.EmailField.SendKeys(email);
         }
 
         [When(@"I type '(.*)' in Passowrd Field")]
         public void WhenITypeInPassowrdField(string testPassword)
         {
-            loginPage.PasswordField.SendKeys(testPassword);
+            string password = GherkinFieldsHelper.GetGherkinObject(testPassword);
+            loginPage.PasswordField.SendKeys(password);
         }
 
         #endregion

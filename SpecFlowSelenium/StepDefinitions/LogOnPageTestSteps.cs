@@ -1,13 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.DevTools.V107.Cast;
 using OpenQA.Selenium.Support.UI;
 using SpecFlowSelenium.Pages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpecFlowSelenium.StepDefinitions
 {
@@ -17,13 +11,11 @@ namespace SpecFlowSelenium.StepDefinitions
         #region Fields and Constants
 
         private DriverHelper _driverHelper;
+        private LoginPage loginPage;
+        private HomePage homePage;
 
-        LoginPage loginPage;
-        HomePage homePage;
-
-
-        private const string incorrectLoginInfo = "Email or password incorrect";
-        private const string incorrectLoginInfo2 = "The password or email you entered is incorrect.";
+        private const string incorrectLoginShort = "Email or password incorrect";
+        private const string incorrectLoginLong = "The password or email you entered is incorrect.";
 
         public LogOnPageTestSteps(DriverHelper driverHelper)
         {
@@ -45,9 +37,14 @@ namespace SpecFlowSelenium.StepDefinitions
         [Then(@"I should see \'(.*)\' information")]
         public void ThenIShouldSeeEmailOrPasswordIncorrect(string info)
         {
-            Assert.AreEqual(info, loginPage.InvalidRequestWindow.Text);
+            Assert.AreEqual(info, loginPage.InvalidRequestWindow.Text, $"\"{info}\" information is incorrect");
         }
 
+        [Then(@"I should see one of incorrect password informations")]
+        public void ThenIShouldSeeOneOfIncorrectPasswordInformations()
+        {
+            Assert.That(loginPage.InvalidRequestWindow.Text, Is.AnyOf(incorrectLoginShort, incorrectLoginLong), "Wrong information about incorrect password");
+        }
 
         [When(@"I log on the site")]
         public void WhenILogOnTheSite()
@@ -60,15 +57,14 @@ namespace SpecFlowSelenium.StepDefinitions
         [Then(@"I see welcoming info")]
         public void ThenISeeWelcomingInfo()
         {
-            Assert.AreEqual("Hello Pawel", homePage.WelcomeInformationField.Text);
+            Assert.AreEqual("Hello Pawel", homePage.WelcomeInformationField.Text, "There is wrong information on home page after log in");
         }
 
-        [When(@"I type wrong password (\d) times")]
+        [When(@"I type wrong password (\d*) times")]
         public void WhenITypeWrongPasswordTimes(int p)
         {
             string wrongPassword = "abcd";
             WebDriverWait wait = new(_driverHelper.Driver, TimeSpan.FromSeconds(10));
-
 
             for (int i = 0; i < p; i++)
             {
@@ -82,7 +78,8 @@ namespace SpecFlowSelenium.StepDefinitions
         [Then(@"I should see \'(.*)\'")]
         public void ThenIShouldSee(string info)
         {
-            Assert.AreEqual(info, loginPage.InvalidRequestWindow.Text);
+            string informationToCheck = GherkinFieldsHelper.GetGherkinObject(info);
+            Assert.AreEqual(informationToCheck, loginPage.InvalidRequestWindow.Text, $"\"{info}\" information is incorrect");
         }
 
         [Then(@"'(.*)' field should stay filled")]
@@ -95,10 +92,8 @@ namespace SpecFlowSelenium.StepDefinitions
                 _ => throw new NotImplementedException(),
             };
 
-            Assert.IsNotEmpty(webElement.GetAttribute("value"));
+            Assert.IsNotEmpty(webElement.GetAttribute("value"), $"{field} field is empty");
         }
-
-
 
         #endregion
     }

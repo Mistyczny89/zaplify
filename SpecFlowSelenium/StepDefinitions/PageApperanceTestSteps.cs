@@ -74,7 +74,6 @@ namespace SpecFlowSelenium.StepDefinitions
         [Then(@"([a-zA-Z]*) placeholder should be visible")]
         public void ThenlaceholderShouldBeVisible(string placeholder)
         {
-
             string placeholderVal = placeholder switch
             {
                 "Email" => loginPage.EmailField.GetAttribute("placeholder"),

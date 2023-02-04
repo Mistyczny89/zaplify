@@ -20,7 +20,6 @@ namespace SpecFlowSelenium.Hooks
             _driverHelper.Driver = new ChromeDriver(options);
 
             _driverHelper.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-  
         }
 
         [AfterScenario]
