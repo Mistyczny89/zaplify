@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.DevTools.V107.Cast;
 using OpenQA.Selenium.Support.UI;
 using SpecFlowSelenium.Pages;
 using System;
@@ -41,10 +42,10 @@ namespace SpecFlowSelenium.StepDefinitions
             loginPage.ClickLogin();
         }
 
-        [Then(@"I should see Email or password incorrect")]
-        public void ThenIShouldSeeEmailOrPasswordIncorrect()
+        [Then(@"I should see \'(.*)\' information")]
+        public void ThenIShouldSeeEmailOrPasswordIncorrect(string info)
         {
-            Assert.AreEqual(incorrectLoginInfo2, _driverHelper.Driver.FindElement(By.ClassName("error")).Text);
+            Assert.AreEqual(info, loginPage.InvalidRequestWindow.Text);
         }
 
 
@@ -59,8 +60,44 @@ namespace SpecFlowSelenium.StepDefinitions
         [Then(@"I see welcoming info")]
         public void ThenISeeWelcomingInfo()
         {
-            var x = homePage.WelcomeInformationField.Text;
+            Assert.AreEqual("Hello Pawel", homePage.WelcomeInformationField.Text);
         }
+
+        [When(@"I type wrong password (\d) times")]
+        public void WhenITypeWrongPasswordTimes(int p)
+        {
+            string wrongPassword = "abcd";
+            WebDriverWait wait = new(_driverHelper.Driver, TimeSpan.FromSeconds(10));
+
+
+            for (int i = 0; i < p; i++)
+            {
+                loginPage.PasswordField.SendKeys(wrongPassword);
+                loginPage.ClickLogin();
+                Thread.Sleep(3000); // I hate this - If you see this: this is not finished.
+                wait.Until(d => loginPage.InvalidRequestWindow.Displayed);
+            }
+        }
+
+        [Then(@"I should see \'(.*)\'")]
+        public void ThenIShouldSee(string info)
+        {
+            Assert.AreEqual(info, loginPage.InvalidRequestWindow.Text);
+        }
+
+        [Then(@"'(.*)' field should stay filled")]
+        public void ThenFieldShouldStayFilled(string field)
+        {
+            IWebElement webElement = field switch
+            {
+                "Email" => loginPage.PasswordField,
+                "Password" => loginPage.PasswordField,
+                _ => throw new NotImplementedException(),
+            };
+
+            Assert.IsNotEmpty(webElement.GetAttribute("value"));
+        }
+
 
 
         #endregion
