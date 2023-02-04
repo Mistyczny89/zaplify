@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SpecFlowSelenium.Pages;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,10 @@ namespace SpecFlowSelenium.StepDefinitions
         #region Fields and Constants
 
         private DriverHelper _driverHelper;
+
         LoginPage loginPage;
+        HomePage homePage;
+
 
         private const string incorrectLoginInfo = "Email or password incorrect";
         private const string incorrectLoginInfo2 = "The password or email you entered is incorrect.";
@@ -24,6 +28,7 @@ namespace SpecFlowSelenium.StepDefinitions
         {
             _driverHelper = driverHelper;
             loginPage = new(_driverHelper.Driver);
+            homePage = new(_driverHelper.Driver);
         }
 
         #endregion
@@ -39,7 +44,7 @@ namespace SpecFlowSelenium.StepDefinitions
         [Then(@"I should see Email or password incorrect")]
         public void ThenIShouldSeeEmailOrPasswordIncorrect()
         {
-            Assert.AreEqual(_driverHelper.Driver.FindElement(By.ClassName("error")).Text, incorrectLoginInfo);
+            Assert.AreEqual(incorrectLoginInfo2, _driverHelper.Driver.FindElement(By.ClassName("error")).Text);
         }
 
 
@@ -47,12 +52,14 @@ namespace SpecFlowSelenium.StepDefinitions
         public void WhenILogOnTheSite()
         {
             loginPage.LogIntoPage();
+            WebDriverWait wait = new(_driverHelper.Driver, TimeSpan.FromSeconds(10));
+            wait.Until(d => homePage.WelcomeInformationField.Displayed);
         }
 
         [Then(@"I see welcoming info")]
         public void ThenISeeWelcomingInfo()
         {
-            throw new PendingStepException();
+            var x = homePage.WelcomeInformationField.Text;
         }
 
 

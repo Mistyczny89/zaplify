@@ -14,7 +14,6 @@ namespace SpecFlowSelenium.Pages
 
         #region Fields and Constants
 
-        public const string logPage = "https://staging.app.zaplify.com/login";
         public const string zaplifyMainPage = "https://zaplify.com/";
 
         #endregion

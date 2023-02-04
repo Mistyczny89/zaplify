@@ -5,7 +5,6 @@ namespace SpecFlowSelenium.Pages
 {
     public class LoginPage
     {
-
         private readonly IWebDriver Driver;
         public LoginPage(IWebDriver driver) => Driver = driver;
 
@@ -28,9 +27,11 @@ namespace SpecFlowSelenium.Pages
         public IWebElement RequiredPasswordlInfo => Driver.FindElement(By.CssSelector(@"div[class*=jss15] > p[class*='MuiFormHelperText-contained']"));
         public System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> RequiredEmailInfoList => Driver.FindElements(By.CssSelector(@"div[class*=jss14] > p[class*='MuiFormHelperText-contained']"));
         public System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> RequiredPasswordlInfoList => Driver.FindElements(By.CssSelector(@"div[class*=jss15] > p[class*='MuiFormHelperText-contained']"));
+        
         #endregion
 
         #region Clicks
+
         public void ClickEmail() => EmailField.Click();
         public void ClickPassword() => PasswordField.Click();
         public void ClickLogin() => LoginButton.Click();
@@ -39,6 +40,7 @@ namespace SpecFlowSelenium.Pages
         #endregion
 
         #region Public methods
+
         public void GoToPage()
         {
             Driver.Navigate().GoToUrl(logPage);
