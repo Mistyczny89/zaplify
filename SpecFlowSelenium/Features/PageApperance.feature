@@ -2,14 +2,14 @@
 
 I want to see properly login page on Zaplify
 
-  Scenario: Visit zaplify.com/login and check existing of elements
+  Scenario: Visit login pahe and check existing of elements
      Given I am on the login page
 	 Then zaplify logo shoud be visible
-	 And Welcome back information should be visible
-	 And Let’s have an efficient day. Log in to keep up with new opportunties.' information should be visible
-	 And Email field should be visible
-	 And Password field should be visible
-	 And LogIn filed should be visible
+	 And 'Welcome back' information should be visible
+	 And 'Efficient day' information should be visible
+	 And 'Email' field should be visible
+	 And 'Password' field should be visible
+	 And 'LogIn' field should be visible
 	 And Password toggle button should be visible
 
   Scenario: Placeholders in login fields 
@@ -20,4 +20,4 @@ I want to see properly login page on Zaplify
   Scenario: Click of zaplify logo
     Given I am on the login page
 	When I click on zaplify logo
-	Then I should be on page https://zaplify.com/
+	Then I should be on page 'Zaplify Main Page'

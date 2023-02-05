@@ -4,8 +4,8 @@ Login button should be inactive, when fields are not filled or filled unproperly
 
   Scenario: Unactive Log in button on empty fields 
     Given I am on the login page
-    When the field email is empty
-    And the field password is empty
+    When The 'Email' field is empty
+    And The 'Password' field is empty
     Then Log in button should be in disabled state
 
   Scenario: Log in button state - bad Email syntax

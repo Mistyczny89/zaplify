@@ -10,9 +10,9 @@ namespace SpecFlowSelenium.StepDefinitions
     {
         #region Fields and Constants
 
-        private DriverHelper _driverHelper;
-        private LoginPage loginPage;
-        private HomePage homePage;
+        private readonly DriverHelper _driverHelper;
+        private readonly LoginPage loginPage;
+        private readonly HomePage homePage;
 
         private const string incorrectLoginShort = "Email or password incorrect";
         private const string incorrectLoginLong = "The password or email you entered is incorrect.";
@@ -89,7 +89,7 @@ namespace SpecFlowSelenium.StepDefinitions
             {
                 "Email" => loginPage.PasswordField,
                 "Password" => loginPage.PasswordField,
-                _ => throw new NotImplementedException(),
+                _ => throw new NotImplementedException($"There is no test definition for \"{field}\" field"),
             };
 
             Assert.IsNotEmpty(webElement.GetAttribute("value"), $"{field} field is empty");

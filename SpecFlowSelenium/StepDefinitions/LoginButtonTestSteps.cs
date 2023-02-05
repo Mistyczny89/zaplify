@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using SpecFlowSelenium.Pages;
 
 namespace SpecFlowSelenium.StepDefinitions
@@ -21,16 +22,18 @@ namespace SpecFlowSelenium.StepDefinitions
 
         #region Test Setps
 
-        [When(@"the field email is empty")]
-        public void WhenTheFieldEmailIsEmpty()
+        [When(@"The '([^']*)' field is empty")]
+        public void WhenTheFieldIsEmpty(string field)
         {
-            Assert.IsTrue(string.IsNullOrEmpty(loginPage.EmailField.GetAttribute("value")));
-        }
+            IWebElement webElement = field switch
+            {
+                "Email" => loginPage.PasswordField,
+                "Password" => loginPage.PasswordField,
+                _ => throw new NotImplementedException($"There is no test definition for \"{field}\" field"),
+            };
 
-        [When(@"the field password is empty")]
-        public void WhenTheFieldPasswordIsEmpty()
-        {
-            Assert.IsTrue(string.IsNullOrEmpty(loginPage.PasswordField.GetAttribute("value")));
+            string valueToCheck = webElement.GetAttribute("value");
+            Assert.IsTrue(string.IsNullOrEmpty(valueToCheck), $"{field} field is not empty!");
         }
 
         [Then(@"Log in button should be in (\w+) state")]

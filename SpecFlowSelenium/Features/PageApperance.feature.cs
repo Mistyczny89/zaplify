@@ -74,12 +74,12 @@ namespace SpecFlowSelenium.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Visit zaplify.com/login and check existing of elements")]
-        public virtual void VisitZaplify_ComLoginAndCheckExistingOfElements()
+        [NUnit.Framework.DescriptionAttribute("Visit login pahe and check existing of elements")]
+        public virtual void VisitLoginPaheAndCheckExistingOfElements()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Visit zaplify.com/login and check existing of elements", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Visit login pahe and check existing of elements", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 5
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -107,20 +107,19 @@ namespace SpecFlowSelenium.Features
   testRunner.Then("zaplify logo shoud be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 8
-  testRunner.And("Welcome back information should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("\'Welcome back\' information should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
-  testRunner.And("Let’s have an efficient day. Log in to keep up with new opportunties.\' informatio" +
-                        "n should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("\'Efficient day\' information should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 10
-  testRunner.And("Email field should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("\'Email\' field should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 11
-  testRunner.And("Password field should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("\'Password\' field should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
-  testRunner.And("LogIn filed should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+  testRunner.And("\'LogIn\' field should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 13
   testRunner.And("Password toggle button should be visible", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -203,7 +202,7 @@ namespace SpecFlowSelenium.Features
  testRunner.When("I click on zaplify logo", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 23
- testRunner.Then("I should be on page https://zaplify.com/", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should be on page \'Zaplify Main Page\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

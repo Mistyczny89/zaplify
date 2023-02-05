@@ -18,9 +18,6 @@ namespace SpecFlowSelenium.StepDefinitions
             loginPage = new(_driverHelper.Driver);
         }         
 
-        private readonly string welcomingText = "Welcome back";
-        private readonly string efficientDayText = "Let’s have an efficient day. Log in to keep up with new opportunties.";
-
         #endregion
 
         #region Test Steps
@@ -32,30 +29,33 @@ namespace SpecFlowSelenium.StepDefinitions
             Assert.IsTrue(isLogoVisible, "Logo isn't visible.");
         }
 
-        [Then(@"Welcome back information should be visible")]
-        public void ThenWelcomeBackInformationShouldBeVisible()
+        [Then(@"'([^']*)' information should be visible")]
+        public void ThenInformationShouldBeVisible(string informaion)
         {
-            string recivedWelcomingText = _driverHelper.Driver.FindElement(By.CssSelector("p[class*='root title']")).Text;
-            Assert.AreEqual(welcomingText, recivedWelcomingText, "Error with welcoming text.");
+            string selector = informaion switch
+            {
+                "Welcome back" => "p[class*='root title']",
+                "Efficient day" => "p[class*='root description']",
+                _ => throw new NotImplementedException("There is no test step definition for \"{informaion}\"."),
+            };
+
+            string informationToCheck = GherkinFieldsHelper.GetGherkinObject(informaion);
+            string recivedText = _driverHelper.Driver.FindElement(By.CssSelector(selector)).Text;
+            Assert.AreEqual(informationToCheck, recivedText, "Error with welcoming text.");
         }
 
-        [Then(@"Let’s have an efficient day\. Log in to keep up with new opportunties\.' information should be visible")]
-        public void ThenLetSHaveAnEfficientDay_LogInToKeepUpWithNewOpportunties_InformationShouldBeVisible()
+        [Then(@"'([^']*)' field should be visible")]
+        public void ThenFieldShouldBeVisible(string field)
         {
-            string recivedWelcomingText = _driverHelper.Driver.FindElement(By.CssSelector("p[class*='root description']")).Text;
-            Assert.AreEqual(efficientDayText, recivedWelcomingText, "Error with \"Have An Efficient Day\" text.");
-        }
+            IWebElement fieldToCheck = field switch
+            {
+                "Email" => loginPage.EmailField,
+                "Password" => loginPage.PasswordField,
+                "LogIn" => loginPage.LoginButton,
+                _ => throw new NotImplementedException($"There is no test definition for \"{field}\" field"),
+            };
 
-        [Then(@"Email field should be visible")]
-        public void ThenEmailFieldShouldBeVisible()
-        {
-            Assert.IsTrue(loginPage.EmailField.Displayed, "Email field is not visible.");
-        }
-
-        [Then(@"Password field should be visible")]
-        public void ThenPasswordFieldShouldBeVisible()
-        {
-            Assert.IsTrue(loginPage.PasswordField.Displayed, "Password field is not visible.");
+            Assert.IsTrue(fieldToCheck.Displayed, $"{field} field is not visible.");
         }
 
         [Then(@"Password toggle button should be visible")]
@@ -64,24 +64,17 @@ namespace SpecFlowSelenium.StepDefinitions
             Assert.IsTrue(loginPage.TogglePsswrdBtn.Displayed, "Password toggle button is not visible.");
         }
 
-
-        [Then(@"LogIn filed should be visible")]
-        public void ThenLogInFiledShouldBeVisible()
-        {
-            Assert.IsTrue(loginPage.LoginButton.Displayed, "Log in field is not visible.");
-        }
-
         [Then(@"([a-zA-Z]*) placeholder should be visible")]
         public void ThenlaceholderShouldBeVisible(string placeholder)
-        {
-            string placeholderVal = placeholder switch
+        {               
+            IWebElement placeholderToCheck = placeholder switch
             {
-                "Email" => loginPage.EmailField.GetAttribute("placeholder"),
-                "Password" => loginPage.PasswordField.GetAttribute("placeholder"),
-                _ => throw new NotImplementedException(),
-            };
-               
-            Assert.AreEqual(placeholderVal, placeholder, $"{placeholder} placeholder is not visible");
+                "Email" => loginPage.EmailField,
+                "Password" => loginPage.PasswordField,
+                _ => throw new NotImplementedException($"There is no test definition for \"{placeholder}\" placeholder"),
+            };            
+
+            Assert.AreEqual(placeholderToCheck.GetAttribute("placeholder"), placeholder, $"{placeholder} placeholder is not visible");
         }
 
         [When(@"I click on zaplify logo")]
@@ -90,10 +83,11 @@ namespace SpecFlowSelenium.StepDefinitions
             loginPage.Logo.Click();
         }
 
-        [Then(@"I should be on page (https:\/\/.+\..{2,3}\/)")]
-        public void ThenIShouldBeOnMainPageHttpsZaplify_Com(string page)
+        [Then(@"I should be on page '([^']*)'")]
+        public void ThenIShouldBeOnPage(string page)
         {
-            Assert.That(_driverHelper.Driver.Url, Is.EqualTo(page), "URL is not correct");
+            string pageToCheck = GherkinFieldsHelper.GetGherkinObject(page);
+            Assert.That(_driverHelper.Driver.Url, Is.EqualTo(pageToCheck), "URL is not correct");
         }
 
         #endregion

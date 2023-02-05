@@ -1,5 +1,4 @@
-﻿using AngleSharp.Common;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using SpecFlowSelenium.Pages;
 
 namespace SpecFlowSelenium.StepDefinitions
@@ -10,7 +9,7 @@ namespace SpecFlowSelenium.StepDefinitions
         #region Fields and Constants
 
         private DriverHelper _driverHelper;
-        LoginPage loginPage;
+        readonly LoginPage loginPage;
 
         public PasswordVisibilityTestSteps(DriverHelper driverHelper)
         {
@@ -22,18 +21,11 @@ namespace SpecFlowSelenium.StepDefinitions
 
         #region Test Setps
 
-        [Then(@"I should see dots as my Password")]
-        public void ThenIShouldSeeDotsAsMyPassowd()
-        {
-            Assert.AreEqual(loginPage.PasswordField.GetAttribute("Type"), "password", "Password field Type should be \"Passowrd\", but isn't.");
-        }
-
-
         [Then(@"number of dots shoud be equal to number of characters in Password '(.*)'")]
         public void ThenNumberOfDotsShoudBeEqualToNumberOfCharactersInPassword(string password)
         {
             string pwd = GherkinFieldsHelper.GetGherkinObject(password);
-            Assert.AreEqual(loginPage.PasswordField.GetAttribute("value").Count(), pwd.Length, "Length of the hidden password is incorrect.");
+            Assert.AreEqual(loginPage.PasswordField.GetAttribute("value").Length, pwd.Length, "Length of the hidden password is incorrect.");
         }
 
         [When(@"I click on toggle password visibility button")]
@@ -42,11 +34,19 @@ namespace SpecFlowSelenium.StepDefinitions
             loginPage.ClickPwdToggle();
         }
 
+        [Then(@"I should see dots as my Password")]
+        public void ThenIShouldSeeDotsAsMyPassowd()
+        {
+            string expectedType = "password";
+            Assert.AreEqual(loginPage.PasswordField.GetAttribute("Type"), expectedType, $"Password field Type should be \"{expectedType}\", but isn't.");
+        }
+
         [Then(@"I should see '(.*)' in Password field")]
         public void ThenIShouldSeeInPasswordField(string password)
         {
             string pwd = GherkinFieldsHelper.GetGherkinObject(password);
-            Assert.AreEqual(loginPage.PasswordField.GetAttribute("Type"), "text", "Password field Type should be \"text\", but isn't.");
+            string expectedType = "text";
+            Assert.AreEqual(loginPage.PasswordField.GetAttribute("Type"), expectedType, $"Password field Type should be \"{expectedType}\", but isn't.");
             Assert.AreEqual(loginPage.PasswordField.GetAttribute("Value"), pwd, "Password isn't visible.");
         }
 

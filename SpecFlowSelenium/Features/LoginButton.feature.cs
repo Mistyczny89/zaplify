@@ -105,10 +105,10 @@ namespace SpecFlowSelenium.Features
     testRunner.Given("I am on the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
-    testRunner.When("the field email is empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("The \'Email\' field is empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 8
-    testRunner.And("the field password is empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("The \'Password\' field is empty", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 9
     testRunner.Then("Log in button should be in disabled state", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

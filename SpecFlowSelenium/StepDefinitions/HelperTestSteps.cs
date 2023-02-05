@@ -9,8 +9,8 @@ namespace SpecFlowSelenium.StepDefinitions
     {
         #region Fields and Constants
 
-        private DriverHelper _driverHelper;
-        LoginPage loginPage;
+        private readonly DriverHelper _driverHelper;
+        readonly LoginPage loginPage;
 
         public HelperTestSteps(DriverHelper driverHelper)
         {
@@ -22,60 +22,63 @@ namespace SpecFlowSelenium.StepDefinitions
 
         #region Test Steps
 
-        [When(@"I click of Email field")]
-        public void WhenIClickOfEmailField()
+        [When(@"I click on Email field")]
+        public void WhenIClickOnEmailField()
         {
             loginPage.ClickEmail();
         }
 
-        [When(@"I click of Password field")]
-        public void WhenIClickOfPasswordField()
+        [When(@"I click on Password field")]
+        public void WhenIClickOnPasswordField()
         {
             loginPage.ClickPassword();
         }
 
-        [Then(@"I should see '([^']*)' information under Email field")]
-        public void ThenIShouldSeeInformationUnderEmailField(string requiredInfo)
+        [Then(@"I should see '([^']*)' information under '([^']*)' field")]
+        public void ThenIShouldSeeInformationUnderField(string required, string field)
         {
-            string reqInfo = GherkinFieldsHelper.GetGherkinObject(requiredInfo);
-            if (loginPage.RequiredEmailInfoList.Count > 0)
-                Assert.AreEqual(reqInfo, loginPage.RequiredEmailInfo.Text);
+            string reqInfo = GherkinFieldsHelper.GetGherkinObject(required);
+            IWebElement fieldToCheck;
+            System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> fieldListToCheck;
+
+            switch (field)
+            {
+                case "Email":
+                    fieldToCheck = loginPage.RequiredEmailInfo;
+                    fieldListToCheck = loginPage.RequiredEmailInfoList;
+                        break;
+                default:
+                    fieldToCheck = loginPage.RequiredPasswordlInfo;
+                    fieldListToCheck = loginPage.RequiredPasswordlInfoList;
+                    break;
+            }
+
+            if (fieldListToCheck.Count > 0)
+                Assert.AreEqual(reqInfo, fieldToCheck.Text, $"There is wrong information under {field} field.");
             else
-                Assert.IsNotEmpty(loginPage.RequiredEmailInfoList, "There is no information under Email Field");           
+                Assert.IsNotEmpty(fieldListToCheck, $"There is no information under {field} Field");
         }
-
-        [Then(@"I should see '([^']*)' information under Password field")]
-        public void ThenIShouldSeeUnderPasswordField(string requiredInfo)
-        {
-            string reqInfo = GherkinFieldsHelper.GetGherkinObject(requiredInfo);
-            if (loginPage.RequiredPasswordlInfoList.Count > 0)            
-                Assert.AreEqual(reqInfo, loginPage.RequiredPasswordlInfo.Text);            
-            else            
-                Assert.IsNotEmpty(loginPage.RequiredPasswordlInfoList, "There is no information under Password Field");
-                      
-        }
-
+       
         [Then(@"Information under Email field should not exist")]
         public void ThenInformationUnderEmailFieldShouldBeEmpty()
         {
-            Assert.IsTrue(loginPage.RequiredEmailInfoList.Count == 0);
+            Assert.IsTrue(loginPage.RequiredEmailInfoList.Count == 0, "Information under Email field should not exist.");
         }
 
-        [When(@"I send backspace in Email field (\d) time\(s\)")]
-        public void WhenISendBackspaceInEmailTimes(int backspaces)
+        [When(@"I send backspace in '([^']*)' field (.*) time\(s\)")]
+        public void WhenISendBackspaceInFieldTimeS(string field, int backspaces)
         {
+            IWebElement workingField = field switch
+            {
+                "Email" => loginPage.EmailField,
+                "Password" => loginPage.PasswordField,
+                _ => throw new NotImplementedException($"There is no test definition for \"{field}\" field"),
+            };
+
             for (int i = 0; i < backspaces; i++)
-                loginPage.EmailField.SendKeys(Keys.Backspace);            
+                workingField.SendKeys(Keys.Backspace);
+
         }
-
-        [When(@"I send backspace in Password field (\d) time\(s\)")]
-        public void WhenISendBackspaceInPasswordFieldTimes(int backspaces)
-        {
-            for (int i = 0; i < backspaces; i++)
-                loginPage.PasswordField.SendKeys(Keys.Backspace);
-        }
-
-
 
         #endregion
 

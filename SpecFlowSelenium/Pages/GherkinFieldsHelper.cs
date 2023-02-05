@@ -24,6 +24,8 @@ namespace SpecFlowSelenium.Pages
                 "Short password info" => "Your password must contain at least 6 characters",
                 "No password info" => "You must type in a password",
                 "Required" => "Required",
+                "Welcome back" => "Welcome back",
+                "Efficient day" => "Let’s have an efficient day. Log in to keep up with new opportunties.",
                 _ => throw new NotImplementedException($"\"{gObject}\" is not implemented on Gherkin fields List"),
             };
         }
