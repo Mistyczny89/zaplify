@@ -22,7 +22,7 @@ Scenario: Email and Password field after incorrect log in
     And I type 'Wrong Password' in Passowrd Field
     And I click on Log in button
     Then 'Email' field should stay filled
-    And  'Password' field should stay filled
+    And 'Password' field should stay filled
 
  Scenario: Too many invalid requests
     Given I am on the login page
