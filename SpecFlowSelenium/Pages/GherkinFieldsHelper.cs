@@ -33,7 +33,7 @@ namespace SpecFlowSelenium.Pages
         public static string GetNodeValue(string nodeName)
         {
             XmlDocument xmlDoc = new();
-            if(!File.Exists(XmlPath))
+            if (!File.Exists(XmlPath))
                 Console.WriteLine("Config file missing.");
 
             xmlDoc.Load(XmlPath);

@@ -25,5 +25,3 @@ Scenario: Hide password after show
 	And I click on toggle password visibility button
 	And I click on toggle password visibility button
 	Then I should see dots as my Password
-
-

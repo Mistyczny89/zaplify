@@ -8,16 +8,16 @@ namespace SpecFlowSelenium.StepDefinitions
     public class LoginButtonTestSteps
     {
         #region Fields and Constants
-                
-        private DriverHelper _driverHelper; 
+
+        private DriverHelper _driverHelper;
         LoginPage loginPage;
 
-        public LoginButtonTestSteps(DriverHelper driverHelper) 
+        public LoginButtonTestSteps(DriverHelper driverHelper)
         {
             _driverHelper = driverHelper;
             loginPage = new(_driverHelper.Driver);
         }
-        
+
         #endregion
 
         #region Test Setps

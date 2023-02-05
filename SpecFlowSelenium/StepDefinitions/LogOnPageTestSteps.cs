@@ -16,7 +16,6 @@ namespace SpecFlowSelenium.StepDefinitions
 
         private const string incorrectLoginShort = "Email or password incorrect";
         private const string incorrectLoginLong = "The password or email you entered is incorrect.";
-
         public LogOnPageTestSteps(DriverHelper driverHelper)
         {
             _driverHelper = driverHelper;

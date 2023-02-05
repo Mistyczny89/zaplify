@@ -16,7 +16,7 @@ namespace SpecFlowSelenium.StepDefinitions
         {
             _driverHelper = driverHelper;
             loginPage = new(_driverHelper.Driver);
-        }         
+        }
 
         #endregion
 
@@ -66,13 +66,13 @@ namespace SpecFlowSelenium.StepDefinitions
 
         [Then(@"([a-zA-Z]*) placeholder should be visible")]
         public void ThenlaceholderShouldBeVisible(string placeholder)
-        {               
+        {
             IWebElement placeholderToCheck = placeholder switch
             {
                 "Email" => loginPage.EmailField,
                 "Password" => loginPage.PasswordField,
                 _ => throw new NotImplementedException($"There is no test definition for \"{placeholder}\" placeholder"),
-            };            
+            };
 
             Assert.AreEqual(placeholderToCheck.GetAttribute("placeholder"), placeholder, $"{placeholder} placeholder is not visible");
         }

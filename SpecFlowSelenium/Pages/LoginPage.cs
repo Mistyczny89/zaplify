@@ -1,11 +1,9 @@
 ﻿using OpenQA.Selenium;
-using System.Xml;
 
 namespace SpecFlowSelenium.Pages
 {
     public class LoginPage : GherkinFieldsHelper
     {
-
         private readonly IWebDriver Driver;
         public LoginPage(IWebDriver driver) => Driver = driver;
 
@@ -20,7 +18,7 @@ namespace SpecFlowSelenium.Pages
         public IWebElement InvalidRequestWindow => Driver.FindElement(By.ClassName("error"));
         public System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> RequiredEmailInfoList => Driver.FindElements(By.CssSelector(@"div[class*=jss14] > p[class*='MuiFormHelperText-contained']"));
         public System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> RequiredPasswordlInfoList => Driver.FindElements(By.CssSelector(@"div[class*=jss15] > p[class*='MuiFormHelperText-contained']"));
-        
+
         #endregion
 
         #region Clicks
@@ -55,7 +53,6 @@ namespace SpecFlowSelenium.Pages
         }
 
         #endregion
-
 
     }
 }

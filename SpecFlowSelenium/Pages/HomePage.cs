@@ -14,8 +14,9 @@ namespace SpecFlowSelenium.Pages
         #endregion
 
         #region UI elements
+
         public IWebElement WelcomeInformationField => Driver.FindElement(By.CssSelector("[class='MuiTypography-root MuiTypography-h5']"));
-        
+
         #endregion
     }
 }
