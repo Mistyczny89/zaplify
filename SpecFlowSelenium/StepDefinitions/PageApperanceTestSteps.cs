@@ -25,7 +25,7 @@ namespace SpecFlowSelenium.StepDefinitions
         [Then(@"zaplify logo shoud be visible")]
         public void ThenZaplifyLogoShoudBeVisible()
         {
-            bool isLogoVisible = _driverHelper.Driver.FindElement(By.CssSelector("img[alt = 'Logo']")).Displayed;
+            bool isLogoVisible = loginPage.Logo.Displayed;
             Assert.IsTrue(isLogoVisible, "Logo isn't visible.");
         }
 
